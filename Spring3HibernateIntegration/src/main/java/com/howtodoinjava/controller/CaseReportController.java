@@ -26,6 +26,8 @@ import com.howtodoinjava.service.UserDetailManager;
 @Controller
 public class CaseReportController {
 	
+	List<String> reportList = new ArrayList<String>();
+	
 	@Autowired
 	private CaseReportManager caseReportManager;
 	
@@ -81,20 +83,16 @@ public class CaseReportController {
 		getTicketStatuses(map);
 		getUser(map, employeeEntity);
 		map.addAttribute("caseReport", new CaseReportEntity());
-		List<String> reportList = new ArrayList<String>();
-		reportList = caseReportManager.fetchResults(caseDetailsEntity);
 		map.addAttribute("reportList",reportList);
 		return "caseReport";
 	}
 	
-	@RequestMapping(value = "/caseReportView", method = RequestMethod.GET)
-	public String addCase(
+	@RequestMapping(value = "/caseReportView", method = RequestMethod.POST)
+	public String viewDetails(
 			@ModelAttribute(value = "caseReport") CaseDetailsEntity caseDetailsEntity,
 			BindingResult result,
 			ModelMap map) {
-		List<String> reportList = new ArrayList<String>();
 		reportList = caseReportManager.fetchResults(caseDetailsEntity);
-		map.addAttribute("reportList",reportList);
 		return "redirect:/caseReport";
 	}
 }

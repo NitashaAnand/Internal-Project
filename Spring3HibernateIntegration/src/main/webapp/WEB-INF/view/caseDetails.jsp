@@ -102,7 +102,7 @@
 			
 			<td>			
 			<div class="form-group">
-				<label ><spring:message code="label.ticket.assigned.to" /></label>
+				<label ><spring:message code="label.assigned.to" /></label>
 				<div ><select class="form-control" data-placeholder ="Select assignee" label="assignedTo" array="assigneeArray"
 						name="assignedTo">
 						<option value="" selected disabled>Select assignee</option>

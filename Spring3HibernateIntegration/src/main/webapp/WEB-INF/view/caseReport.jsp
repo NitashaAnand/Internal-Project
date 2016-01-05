@@ -27,7 +27,7 @@
 		<div class="row-fluid">
 			<div>
 			<legend><spring:message code="label.case.report" /></legend>
-			<form name="caseReportForm" class="col-xs-4" action="caseReport" method="GET" id="demo">
+			<form name="caseReportForm" class="col-xs-4" action="caseReportView" method="POST" id="demo">
 			<table width="100%">
 			<tr>
 			<td><div class="form-group">
