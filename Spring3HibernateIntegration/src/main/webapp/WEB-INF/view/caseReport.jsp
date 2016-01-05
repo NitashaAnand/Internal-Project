@@ -19,23 +19,6 @@
 	$(function() {
     $( "#datepicker_assigned_on" ).datepicker();
   });
-	
-	function myFunction() {
-		 if(caseReportForm.caseNo.value.length==0 && 
-				 caseReportForm.clientName.value.length==0 && 
-				 caseReportForm.assignedOn.value.length==0 && 
-				 caseReportForm.ticketPriority.value.length==0 && 
-				 caseReportForm.ticketStatus.value.length==0 && 
-				 caseReportForm.assignedTo.value.length==0 && 
-				 caseReportForm.issueSummary.value.length==0 &&
-				 caseReportForm.timeSpent.value.length==0)
-	        {
-			 alert("1");
-	           document.getElementById('demo').innerHTML="Please select atleast 1 entry!";
-	           return false;
-	        
-	        }
-	}
   </script>
 <title><spring:message code="label.case.report" /></title>
 </head>
@@ -44,7 +27,7 @@
 		<div class="row-fluid">
 			<div>
 			<legend><spring:message code="label.case.report" /></legend>
-			<form name="caseReportForm" class="col-xs-4" action="caseReport" method="GET" onsubmit="return myFunction();" id="demo">
+			<form name="caseReportForm" class="col-xs-4" action="caseReport" method="GET" id="demo">
 			<table width="100%">
 			<tr>
 			<td><div class="form-group">
@@ -109,7 +92,7 @@
 			<td>&nbsp;</td>
 			<td><div class="form-group">
 				<label ><spring:message code="label.time.spent" /></label>
-				<div ><input class="form-control" type='text' name='timeSpent' onblur="myFunction()" id="demo"></div>
+				<div ><input class="form-control" type='text' name='timeSpent' id="demo"></div>
 			</div></td>
 			</tr>
 			<tr>

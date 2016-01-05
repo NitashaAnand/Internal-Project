@@ -130,7 +130,7 @@
 			
 			<div>
 				<button type="submit" class="btn .btn-primary">
-				<spring:message code="label.add.case" /></button>
+				Add</button>
 				<input type="reset" class="btn" value="Reset"/>
 			</div>
 			

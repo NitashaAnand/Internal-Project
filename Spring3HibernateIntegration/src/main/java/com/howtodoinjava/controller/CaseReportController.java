@@ -84,28 +84,4 @@ public class CaseReportController {
 		map.addAttribute("reportList",reportList);
 		return "redirect:/caseReport";
 	}
-	
-	/* @RequestMapping("/edit/{id}")
-	    public String editCase(@PathVariable("id") int id, Model model){
-	        //model.addAttribute("reportList", this.caseReportManager.getCaseById(id));
-	        model.addAttribute("reportList", this.caseReportManager.fetchResults(caseDetailsEntity));
-	        return "caseReport";
-	    }*/
-	
-	/* @RequestMapping("edit")  
-	 public ModelAndView editUser(@RequestParam int id,  
-	   @ModelAttribute CaseDetailsEntity caseDetailsEntity) {  
-	  CaseDetailsEntity caseObject = caseReportManager.getRowById(id);  
-	  return new ModelAndView("edit", "caseObject", caseObject);  
-	 }  
-	  
-	 @RequestMapping("update")  
-	 public ModelAndView updateUser(@ModelAttribute CaseDetailsEntity caseDetailsEntity) {  
-		 caseReportManager.updateRow(caseDetailsEntity);  
-	  return new ModelAndView("redirect:/caseReport");  
-	 }  */
-	  
-
-
-	
 }
