@@ -30,7 +30,6 @@ public class CaseDetailsEntity {
 	@Column(name="clientName")
 	private String clientName;
 	
-	
 	@Column(name="assignedOn")
 	private String assignedOn;
 	

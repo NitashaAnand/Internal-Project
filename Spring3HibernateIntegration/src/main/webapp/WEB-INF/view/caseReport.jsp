@@ -78,10 +78,26 @@
 			</td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
-			<td><div class="form-group">
+			
+			<td>			
+			<div class="form-group">
+				<label ><spring:message code="label.ticket.assigned.to" /></label>
+				<div ><select class="form-control" data-placeholder ="Select assignee" label="assignedTo" array="assigneeArray"
+						name="assignedTo">
+						<option value="" selected disabled>Select assignee</option>
+							<c:forEach var="user" items="${userList}">
+								<option value="${user.firstname} ${user.lastname}">
+									<c:out value="${user.firstname} ${user.lastname}"/>
+								</option>
+							</c:forEach>
+					</select></div>
+			</div>
+			</td>
+			
+			<%-- <td><div class="form-group">
 				<label ><spring:message code="label.assigned.to" /></label>
 				<div ><input class="form-control" type='text' name='assignedTo'></div>
-			</div></td>
+			</div></td> --%>
 			</tr>
 			<tr>
 			<td><div class="form-group">

@@ -67,7 +67,11 @@
     <bean id="caseManager" class="com.howtodoinjava.service.CaseManagerImpl"></bean>
     <bean id="caseDetailDao" class="com.howtodoinjava.dao.CaseDetailDaoImpl"></bean>
     <bean id="caseReportManager" class="com.howtodoinjava.service.CaseReportManagerImpl"></bean>
+    <bean id="userDetailManager" class="com.howtodoinjava.service.UserDetailManagerImpl"></bean>
     <bean id="caseReportDao" class="com.howtodoinjava.dao.CaseReportDaoImpl">
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="userDetailDao" class="com.howtodoinjava.dao.UserDetailDaoImpl">
     	<property name="sessionFactory" ref="sessionFactory" />
     </bean>
     
