@@ -46,6 +46,9 @@
 			<div>
 			<legend><spring:message code="label.case.report" /></legend>
 			<form name="caseReportForm" class="col-xs-4" action="addCase" method="POST">
+			
+			 <input type="hidden" name='date' label="Date" title="dd/mm/yyyy format"  value="<%= new java.util.Date() %>"/>
+                </td>
 			<table width="100%">
 			<tr>
 			<td><div class="form-group required">

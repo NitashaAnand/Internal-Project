@@ -7,13 +7,13 @@ import javax.persistence.Table;
 @Table(name="casedetails")
 public class CaseReportEntity {
 
-	private Date date;
+	private String date;
 	
 	private String caseNo;
 	
 	private String clientName;
 	
-	private Date assignedOn;
+	private String assignedOn;
 	
 	private String assignedTo;
 	
@@ -21,19 +21,13 @@ public class CaseReportEntity {
 	
 	private String comment;
 	
-	private int timeSpent;
+	private String timeSpent;
 	
 	private String ticketStatus;
 	
 	private String ticketPriority;
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
+	
 
 	public String getCaseNo() {
 		return caseNo;
@@ -51,11 +45,11 @@ public class CaseReportEntity {
 		this.clientName = clientName;
 	}
 
-	public Date getAssignedOn() {
+	public String getAssignedOn() {
 		return assignedOn;
 	}
 
-	public void setAssignedOn(Date assignedOn) {
+	public void setAssignedOn(String assignedOn) {
 		this.assignedOn = assignedOn;
 	}
 
@@ -83,11 +77,11 @@ public class CaseReportEntity {
 		this.comment = comment;
 	}
 
-	public int getTimeSpent() {
+	public String getTimeSpent() {
 		return timeSpent;
 	}
 
-	public void setTimeSpent(int timeSpent) {
+	public void setTimeSpent(String timeSpent) {
 		this.timeSpent = timeSpent;
 	}
 
@@ -105,6 +99,15 @@ public class CaseReportEntity {
 
 	public void setTicketPriority(String ticketPriority) {
 		this.ticketPriority = ticketPriority;
+	}
+
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 	
 }

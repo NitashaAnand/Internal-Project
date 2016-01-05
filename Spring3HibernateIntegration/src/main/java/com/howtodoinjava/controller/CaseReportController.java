@@ -6,10 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;  
+import org.springframework.web.bind.annotation.RequestParam;  
 
 import com.howtodoinjava.entity.CaseDetailsEntity;
 import com.howtodoinjava.entity.CaseReportEntity;
@@ -22,6 +26,10 @@ public class CaseReportController {
 	
 	@Autowired
 	private CaseReportManager caseReportManager;
+	
+	/*@Autowired
+	private CaseDetailsEntity caseDetailsEntity;*/
+	
 	
 	public void setCaseReportManager(CaseReportManager caseReportManager) {
 		this.caseReportManager = caseReportManager;
@@ -46,6 +54,14 @@ public class CaseReportController {
 		ticketStatuses.add(TicketStatusEnum.CLOSED.getStatusCode());
 		map.addAttribute("ticketStatuses",ticketStatuses);
 	}
+	
+	@RequestMapping("/delete/{caseId}")
+	public String deleteCase(@PathVariable("caseId") Integer caseId) {
+		caseReportManager.deleteCase(caseId);
+		return "redirect:/caseReport";
+	}
+	
+	
 
 	@RequestMapping(value = "/caseReport", method = RequestMethod.GET)
 	public String home(ModelMap map, @ModelAttribute(value = "caseReport") CaseDetailsEntity caseDetailsEntity){
@@ -68,5 +84,28 @@ public class CaseReportController {
 		map.addAttribute("reportList",reportList);
 		return "redirect:/caseReport";
 	}
+	
+	/* @RequestMapping("/edit/{id}")
+	    public String editCase(@PathVariable("id") int id, Model model){
+	        //model.addAttribute("reportList", this.caseReportManager.getCaseById(id));
+	        model.addAttribute("reportList", this.caseReportManager.fetchResults(caseDetailsEntity));
+	        return "caseReport";
+	    }*/
+	
+	/* @RequestMapping("edit")  
+	 public ModelAndView editUser(@RequestParam int id,  
+	   @ModelAttribute CaseDetailsEntity caseDetailsEntity) {  
+	  CaseDetailsEntity caseObject = caseReportManager.getRowById(id);  
+	  return new ModelAndView("edit", "caseObject", caseObject);  
+	 }  
+	  
+	 @RequestMapping("update")  
+	 public ModelAndView updateUser(@ModelAttribute CaseDetailsEntity caseDetailsEntity) {  
+		 caseReportManager.updateRow(caseDetailsEntity);  
+	  return new ModelAndView("redirect:/caseReport");  
+	 }  */
+	  
+
+
 	
 }

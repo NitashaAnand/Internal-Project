@@ -104,7 +104,7 @@
 				<label><spring:message code="label.enter.comment" /></label>
 				<div><input type='checkbox' name='noComment' onclick="enableDisableTextArea(this);"></div>
 				<div>&nbsp;</div>
-				<div><textarea class="form-control" name="txtarea" path="comment" placeholder="Enter text here" id="tArea" disabled="disabled"></textarea></div>
+				<div><textarea class="form-control" name='comment' placeholder="Enter text here" id="tArea" disabled="disabled"></textarea></div>
 			</div>
 			
 			<div>

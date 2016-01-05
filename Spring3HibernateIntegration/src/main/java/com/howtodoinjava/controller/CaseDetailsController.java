@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.howtodoinjava.entity.CaseDetailsEntity;
+import com.howtodoinjava.entity.EmployeeEntity;
 import com.howtodoinjava.enums.CasePriorityEnum;
 import com.howtodoinjava.enums.TicketStatusEnum;
 import com.howtodoinjava.service.CaseManager;
@@ -58,16 +59,6 @@ public class CaseDetailsController {
 	public String addCase(
 			@ModelAttribute(value = "caseDetails") CaseDetailsEntity caseDetails,
 			BindingResult result) {
-		if(caseDetails.getCaseNo().isEmpty() || 
-				caseDetails.getClientName().isEmpty() || 
-				caseDetails.getAssignedTo().isEmpty() || 
-				caseDetails.getIssueSummary().isEmpty() || 
-				caseDetails.getTicketPriority().isEmpty() ||
-				caseDetails.getTicketStatus().isEmpty() ||
-				caseDetails.getAssignedOn() == null || 
-				Integer.valueOf(caseDetails.getTimeSpent()) == 0){
-			return "redirect:/caseDetails";
-		}
 		caseManager.addCase(caseDetails);
 		return "redirect:/caseDetails";
 	}

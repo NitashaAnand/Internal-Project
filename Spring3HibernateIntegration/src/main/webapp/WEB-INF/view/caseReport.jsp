@@ -19,6 +19,23 @@
 	$(function() {
     $( "#datepicker_assigned_on" ).datepicker();
   });
+	
+	function myFunction() {
+		 if(caseReportForm.caseNo.value.length==0 && 
+				 caseReportForm.clientName.value.length==0 && 
+				 caseReportForm.assignedOn.value.length==0 && 
+				 caseReportForm.ticketPriority.value.length==0 && 
+				 caseReportForm.ticketStatus.value.length==0 && 
+				 caseReportForm.assignedTo.value.length==0 && 
+				 caseReportForm.issueSummary.value.length==0 &&
+				 caseReportForm.timeSpent.value.length==0)
+	        {
+			 alert("1");
+	           document.getElementById('demo').innerHTML="Please select atleast 1 entry!";
+	           return false;
+	        
+	        }
+	}
   </script>
 <title><spring:message code="label.case.report" /></title>
 </head>
@@ -27,12 +44,12 @@
 		<div class="row-fluid">
 			<div>
 			<legend><spring:message code="label.case.report" /></legend>
-			<form name="caseReportForm" class="col-xs-4" action="caseReport" method="GET">
+			<form name="caseReportForm" class="col-xs-4" action="caseReport" method="GET" onsubmit="return myFunction();" id="demo">
 			<table width="100%">
 			<tr>
 			<td><div class="form-group">
 				<label ><spring:message code="label.case.number" /></label>
-				<div ><input class="form-control" type='text' name='caseNo'></div>
+				<div ><input class="form-control" type='text' name='caseNo' ></div>
 			</div></td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
@@ -92,25 +109,26 @@
 			<td>&nbsp;</td>
 			<td><div class="form-group">
 				<label ><spring:message code="label.time.spent" /></label>
-				<div ><input class="form-control" type='text' name='timeSpent'></div>
+				<div ><input class="form-control" type='text' name='timeSpent' onblur="myFunction()" id="demo"></div>
 			</div></td>
 			</tr>
-			
+			<tr>
+			<td>
+			<button type="submit" class="btn .btn-primary">
+				<spring:message code="label.search"/></button>
+				<button type="submit" class="btn .btn-primary">
+				 Update</button></td>
+			</tr>
 			</table>
 			
-			<div>
-				<button type="submit" class="btn .btn-primary">
-				<spring:message code="label.search" /></button>
-				<input type="reset" class="btn" value="Reset"/>
-			</div>
-			
+			</form>
 			<div>&nbsp;</div>
 			<div>&nbsp;</div>
 		
 			<div class="container-fluid">
 				<div class="row-fluid">
 					<div>
-					<table id="reportTable" class="table table-striped table-bordered table-condensed" width="100%" border="1"
+					<table id="reportTable" class="table table-striped table-bordered table-condensed" width="100%" border="10"
 								style="margin-top: 5px; table-layout: fixed;">
 							<c:choose>
 							<c:when test="${!empty reportList}">
@@ -120,6 +138,7 @@
 							<th>Status</th>
 							<th>Assigned to</th>
 							<th>Issue summary</th>
+							<th>Time Spent</th>
 							<c:forEach items="${reportList}" var="reportList">
 									<tr>
 									<td>${reportList.caseNo}</td>
@@ -128,13 +147,18 @@
 									<td>${reportList.ticketStatus}</td>
 									<td>${reportList.assignedTo}</td>
 									<td>${reportList.issueSummary}</td>
+									<td>${reportList.timeSpent}</td>
+									 <td><button type="submit" class="btn .btn-primary"><a href="delete/${reportList.id}">
+										Delete</button></td>
+										&nbsp; <td><button type="submit" class="btn .btn-primary"><a href="edit?id=${reportList.id}">
+										Edit</button></td>
 									</tr>
 									
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
 								<table>
-									<td>Arora</td>
+									<td>Sorry,no result found!!</td>
 								</table>
 							</c:otherwise>
 						</c:choose>
@@ -142,7 +166,7 @@
 					</div>
 				</div>
 			</div>
-			</form>
+			
 			</div>
 		</div>
 	</div>

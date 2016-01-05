@@ -21,8 +21,8 @@ public class CaseDetailsEntity {
 	@Column(name="id", unique=true, nullable=false)
     private Integer id;
 	
-	@Column(name="date")
-	private Date date;
+	@Column(name="mydate")
+	private String date;
 	
 	@Column(name="caseNumber")
 	private String caseNo;
@@ -30,8 +30,9 @@ public class CaseDetailsEntity {
 	@Column(name="clientName")
 	private String clientName;
 	
+	
 	@Column(name="assignedOn")
-	private Date assignedOn;
+	private String assignedOn;
 	
 	@Column(name="assignedTo")
 	private String assignedTo;
@@ -43,7 +44,7 @@ public class CaseDetailsEntity {
 	private String comment;
 	
 	@Column(name="timeSpent")
-	private int timeSpent;
+	private String timeSpent;
 	
 	@Column(name="ticketStatus")
 	private String ticketStatus;
@@ -59,11 +60,11 @@ public class CaseDetailsEntity {
 		this.id = id;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
@@ -83,11 +84,11 @@ public class CaseDetailsEntity {
 		this.clientName = clientName;
 	}
 
-	public Date getAssignedOn() {
+	public String getAssignedOn() {
 		return assignedOn;
 	}
 
-	public void setAssignedOn(Date assignedOn) {
+	public void setAssignedOn(String assignedOn) {
 		this.assignedOn = assignedOn;
 	}
 
@@ -115,11 +116,11 @@ public class CaseDetailsEntity {
 		this.comment = comment;
 	}
 
-	public int getTimeSpent() {
+	public String getTimeSpent() {
 		return timeSpent;
 	}
 
-	public void setTimeSpent(int timeSpent) {
+	public void setTimeSpent(String timeSpent) {
 		this.timeSpent = timeSpent;
 	}
 

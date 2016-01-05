@@ -8,7 +8,7 @@ public class TestDB {
 		{
 		String url = "jdbc:postgresql://localhost:5432/TimeLogDB";
 		String user = "postgres";
-		String password = "Post@123";
+		String password = "root";
 
 		// Load the Connector/J driver
 		Class.forName("org.postgresql.Driver").newInstance();
