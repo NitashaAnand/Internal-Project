@@ -146,7 +146,7 @@
 			
 			<div>
 				<button type="submit" class="btn .btn-primary">
-				Add</button>
+				<spring:message code="label.add.case" /></button>
 				<input type="reset" class="btn" value="Reset"/>
 			</div>
 			

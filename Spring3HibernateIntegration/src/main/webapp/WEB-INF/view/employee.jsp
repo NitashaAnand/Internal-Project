@@ -35,7 +35,7 @@
         <td>${emp.address}</td>
         <td>${emp.comment}</td>
         <td><button type="submit" class="btn .btn-primary"><a href="delete/${emp.id}">
-				Delete</button></td>
+				<spring:message code="label.delete" /></button></td>
     </tr>
 </c:forEach>
 </tbody>
