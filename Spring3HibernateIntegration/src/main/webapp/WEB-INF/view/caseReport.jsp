@@ -131,13 +131,13 @@
 								style="margin-top: 5px; table-layout: fixed;">
 							<c:choose>
 							<c:when test="${!empty reportList}">
-							<th>Case number</th>
-							<th>Client name</th>
-							<th>Priority</th>
-							<th>Status</th>
-							<th>Assigned to</th>
-							<th>Issue summary</th>
-							<th>Time Spent</th>
+							<th><spring:message code="label.case.number" /></th>
+							<th><spring:message code="label.client.name" /></th>
+							<th><spring:message code="label.ticket.priority" /></th>
+							<th><spring:message code="label.ticket.status" /></th>
+							<th><spring:message code="label.assigned.to" /></th>
+							<th><spring:message code="label.issue" /></th>
+							<th><spring:message code="label.time.spent" /></th>
 							<c:forEach items="${reportList}" var="reportList">
 									<tr>
 									<td>${reportList.caseNo}</td>
@@ -148,15 +148,15 @@
 									<td>${reportList.issueSummary}</td>
 									<td>${reportList.timeSpent}</td>
 									 <td><button type="submit" class="btn .btn-primary"><a href="delete/${reportList.id}">
-										Delete</button></td>
+										<spring:message code="label.delete" /></button></td>
 									</tr>
 									
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								<table>
-									<td>Sorry,no result found!!</td>
-								</table>
+							<div class="alert alert-info alert-block" style="margin-top:300px; width:33%;">
+								<h4 class="alert-heading"><spring:message code="label.no.records.found" /></h4>
+							</div>
 							</c:otherwise>
 						</c:choose>
 						</table>
