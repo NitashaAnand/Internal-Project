@@ -81,7 +81,7 @@
 			
 			<td>			
 			<div class="form-group">
-				<label ><spring:message code="label.ticket.assigned.to" /></label>
+				<label ><spring:message code="label.assigned.to" /></label>
 				<div ><select class="form-control" data-placeholder ="Select assignee" label="assignedTo" array="assigneeArray"
 						name="assignedTo">
 						<option value="" selected disabled>Select assignee</option>
@@ -115,12 +115,12 @@
 			<td>
 			<button type="submit" class="btn .btn-primary">
 				<spring:message code="label.search"/></button>
-				<button type="submit" class="btn .btn-primary">
-				 Update</button></td>
+				</td>
 			</tr>
 			</table>
-			
+			<br>
 			</form>
+			
 			<div>&nbsp;</div>
 			<div>&nbsp;</div>
 		
@@ -149,8 +149,6 @@
 									<td>${reportList.timeSpent}</td>
 									 <td><button type="submit" class="btn .btn-primary"><a href="delete/${reportList.id}">
 										Delete</button></td>
-										&nbsp; <td><button type="submit" class="btn .btn-primary"><a href="edit?id=${reportList.id}">
-										Edit</button></td>
 									</tr>
 									
 								</c:forEach>
