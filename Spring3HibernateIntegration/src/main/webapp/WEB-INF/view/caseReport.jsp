@@ -147,8 +147,8 @@
 									<td>${reportList.assignedTo}</td>
 									<td>${reportList.issueSummary}</td>
 									<td>${reportList.timeSpent}</td>
-									 <td><button type="submit" class="btn .btn-primary"><a href="delete/${reportList.id}">
-										<spring:message code="label.delete" /></button></td>
+									 <%-- <td><button type="submit" class="btn .btn-primary"><a href="delete/${reportList.id}">
+										<spring:message code="label.delete" /></button></td> --%>
 									</tr>
 									
 								</c:forEach>
