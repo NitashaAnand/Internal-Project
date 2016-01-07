@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.howtodoinjava.entity.CaseDetailsEntity;
 import com.howtodoinjava.entity.CaseReportEntity;
@@ -73,10 +74,36 @@ public class CaseDetailsController {
 	}
 	
 	@RequestMapping(value = "/addCase", method = RequestMethod.POST)
-	public String addCase(
+	public String addCase(ModelMap map,
 			@ModelAttribute(value = "caseDetails") CaseDetailsEntity caseDetails,
-			BindingResult result) {
+			BindingResult result, SessionStatus status, @ModelAttribute(value = "userDetail") EmployeeEntity employeeEntity) {
+		
+		getTicketPriorities(map);
+		getTicketStatuses(map);
+		getUser(map, employeeEntity);
+		
+		boolean error = false;
+	     
+	    System.out.println(caseDetails); //Verifying if information is same as input by user
+	     
+		if (caseDetails.getCaseNo().isEmpty()
+				|| caseDetails.getClientName().isEmpty()
+				|| caseDetails.getAssignedOn().isEmpty()
+				|| caseDetails.getAssignedTo() == null
+				|| caseDetails.getIssueSummary().isEmpty()
+				|| caseDetails.getTimeSpent().isEmpty()
+				|| caseDetails.getTicketStatus() == null
+				|| caseDetails.getTicketPriority() == null) {
+	        result.rejectValue("date", "error.date");
+	        error = true;
+	    }	
+		
+	    if(error) {
+	    	map.addAttribute("errorMessage", "Please enter all details");
+	        return "caseDetails";
+	    }
 		caseManager.addCase(caseDetails);
+		status.setComplete();
 		return "redirect:/caseDetails";
 	}
 }

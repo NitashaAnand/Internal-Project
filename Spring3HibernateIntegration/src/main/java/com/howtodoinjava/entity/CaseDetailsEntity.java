@@ -1,5 +1,6 @@
 package com.howtodoinjava.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,7 +14,8 @@ import javax.persistence.Table;
 @Entity (name = "CaseDetails")
 @Table(name="casedetails")
 
-public class CaseDetailsEntity {
+public class CaseDetailsEntity implements Serializable{
+	
 
 	@Id 
 	@SequenceGenerator(name="pk_sequence",sequenceName="case_seq", allocationSize=1)
@@ -51,6 +53,8 @@ public class CaseDetailsEntity {
 	@Column(name="ticketPriority")
 	private String ticketPriority;
 
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -138,5 +142,12 @@ public class CaseDetailsEntity {
 	public void setTicketPriority(String ticketPriority) {
 		this.ticketPriority = ticketPriority;
 	}
+	
+	//temp testing
+	@Override
+    public String toString() {
+        return "CaseDetailsEntity [id=" + id + ", date=" + date
+                + ", caseNo=" + caseNo + ", clientName=" + clientName + ", assignedOn=" + assignedOn + ", assignedTo=" + assignedTo + ", issueSummary=" + issueSummary + ", comment=" + comment + ", timeSpent=" + timeSpent + ", ticketStatus=" + ticketStatus + ", ticketPriority=" + ticketPriority + "]";
+    }
 	
 }

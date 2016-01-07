@@ -1,6 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,7 +38,24 @@
 		.form-group.required .control-label:after {
 			content:"*";color:red;
 		}
+		
+        .error {
+    color: #b94a48;
+    padding:5px 10px;
+    background-color: #fde9f3;
+    border:1px solid #c98186;
+    border-radius:5px;
+    margin-bottom: 10px;
+	width:32%;
+}
+.error-field
+    {
+        color: #ff0000;
+        font-weight: bold;
+    }
+    	
 	</style>
+
 <title><spring:message code="label.case.report" /></title>
 </head>
 <body>
@@ -45,27 +63,39 @@
 		<div class="row-fluid">
 			<div>
 			<legend><spring:message code="label.case.report" /></legend>
-			<form name="caseReportForm" class="col-xs-4" action="addCase" method="POST">
+			
+			<spring:nestedPath path="caseDetails">
+    <form:errors  path="date"  element="div"
+        cssClass="error" />
+</spring:nestedPath>
+			
+			<form:form method="post" modelAttribute="caseDetails" action="addCase" name="caseReportForm" class="col-xs-4">
+			
+			
 			
 			 <input type="hidden" name='date' label="Date" title="dd/mm/yyyy format"  value="<%= new java.util.Date() %>"/>
+			
                 </td>
 			<table width="100%">
 			<tr>
 			<td><div class="form-group required">
 				<label class="control-label"><spring:message code="label.case.number" /></label>
 				<div ><input class="form-control" type='text' name='caseNo'></div>
+				
 			</div></td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td><div class="form-group required">
 				<label class="control-label"><spring:message code="label.client.name" /></label>
 				<div ><input class="form-control" name='clientName' id="clientName"></div>
+				
 			</div></td>
 			</tr>
 			<tr>
 			<td><div class="form-group required">
 				<label class="control-label"><spring:message code="label.assigned.on" /></label>
 				<div ><input class="form-control" type='text' id="datepicker_assigned_on" name='assignedOn'></div>
+				
 			</div></td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
@@ -80,7 +110,9 @@
 								</option>
 							</c:forEach>
 					</select></div>
-			</div></td>
+			</div>
+			
+			</td>
 			</tr>
 			<tr>
 			<td>			
@@ -95,7 +127,9 @@
 								</option>
 							</c:forEach>
 					</select></div>
+					
 			</div>
+			
 			</td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
@@ -113,24 +147,26 @@
 							</c:forEach>
 					</select></div>
 			</div>
+			
 			</td>
 			
-			<%-- <td><div class="form-group required">
-				<label class="control-label"><spring:message code="label.assigned.to" /></label>
-				<div ><input class="form-control" type='text' name='assignedTo'></div>
-			</div></td> --%>
+			
 			</tr>
 			<tr>
 			<td><div class="form-group required">
 				<label class="control-label"><spring:message code="label.issue" /></label>
 				<div ><input class="form-control" type='text' name='issueSummary'></div>
-			</div></td>
+			</div>
+			
+			</td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td><div class="form-group required">
 				<label class="control-label"><spring:message code="label.time.spent" /></label>
 				<div ><input class="form-control" type='text' placeholder="In minutes" name='timeSpent'></div>
-			</div></td>
+			</div>
+			
+			</td>
 			</tr>
 			<tr>
 			<td>
@@ -152,6 +188,7 @@
 			
 			<div>&nbsp;</div>
 			<div>&nbsp;</div>
+			</form:form>
 			</div>
 		</div>
 	</div>
