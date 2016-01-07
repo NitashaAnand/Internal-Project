@@ -77,8 +77,7 @@
 			</div>
 			</td>
 			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			
+			<td>&nbsp;</td>			
 			<td>			
 			<div class="form-group">
 				<label ><spring:message code="label.assigned.to" /></label>
@@ -93,11 +92,6 @@
 					</select></div>
 			</div>
 			</td>
-			
-			<%-- <td><div class="form-group">
-				<label ><spring:message code="label.assigned.to" /></label>
-				<div ><input class="form-control" type='text' name='assignedTo'></div>
-			</div></td> --%>
 			</tr>
 			<tr>
 			<td><div class="form-group">
@@ -136,6 +130,7 @@
 							<th><spring:message code="label.ticket.priority" /></th>
 							<th><spring:message code="label.ticket.status" /></th>
 							<th><spring:message code="label.assigned.to" /></th>
+							<th><spring:message code="label.assigned.on" /></th>
 							<th><spring:message code="label.issue" /></th>
 							<th><spring:message code="label.time.spent" /></th>
 							<c:forEach items="${reportList}" var="reportList">
@@ -145,6 +140,7 @@
 									<td>${reportList.ticketPriority}</td>
 									<td>${reportList.ticketStatus}</td>
 									<td>${reportList.assignedTo}</td>
+									<td>${reportList.assignedOn}</td>
 									<td>${reportList.issueSummary}</td>
 									<td>${reportList.timeSpent}</td>
 									 <%-- <td><button type="submit" class="btn .btn-primary"><a href="delete/${reportList.id}">
