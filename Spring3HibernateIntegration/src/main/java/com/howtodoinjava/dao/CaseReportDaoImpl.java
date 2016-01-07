@@ -11,6 +11,7 @@ import org.hibernate.Session;
 import java.io.Serializable;  
 import org.hibernate.Transaction;  
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateCallback;
@@ -50,7 +51,7 @@ public class CaseReportDaoImpl extends HibernateDaoSupport implements CaseReport
 					criteria.add(Restrictions.eq("assignedTo",caseDetailsEntity.getAssignedTo()));
 				}
 				if(caseDetailsEntity.getIssueSummary()!=null && !caseDetailsEntity.getIssueSummary().isEmpty()){
-					criteria.add(Restrictions.eq("issueSummary",caseDetailsEntity.getIssueSummary()));
+				criteria.add(Restrictions.ilike("issueSummary", caseDetailsEntity.getIssueSummary(),  MatchMode.ANYWHERE));
 				}
 				if(caseDetailsEntity.getTicketStatus()!=null && !caseDetailsEntity.getTicketStatus().isEmpty()){
 					criteria.add(Restrictions.eq("ticketStatus",caseDetailsEntity.getTicketStatus()));

@@ -98,12 +98,7 @@
 				<label ><spring:message code="label.issue" /></label>
 				<div ><input class="form-control" type='text' name='issueSummary'></div>
 			</div></td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td><div class="form-group">
-				<label ><spring:message code="label.time.spent" /></label>
-				<div ><input class="form-control" type='text' name='timeSpent' id="demo"></div>
-			</div></td>
+			
 			</tr>
 			<tr>
 			<td>
