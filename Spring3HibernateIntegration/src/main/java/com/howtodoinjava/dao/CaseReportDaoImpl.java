@@ -42,7 +42,7 @@ public class CaseReportDaoImpl extends HibernateDaoSupport implements CaseReport
 					criteria.add(Restrictions.eq("caseNo",caseDetailsEntity.getCaseNo()));
 				}
 				if(caseDetailsEntity.getClientName()!=null && !caseDetailsEntity.getClientName().isEmpty()){
-					criteria.add(Restrictions.eq("clientName",caseDetailsEntity.getClientName()));
+					criteria.add(Restrictions.ilike("clientName",caseDetailsEntity.getClientName(),  MatchMode.ANYWHERE));
 				}
 				if(caseDetailsEntity.getAssignedOn()!=null && !caseDetailsEntity.getAssignedOn().isEmpty()){
 					criteria.add(Restrictions.eq("assignedOn",caseDetailsEntity.getAssignedOn()));
