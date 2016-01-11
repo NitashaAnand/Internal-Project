@@ -18,9 +18,9 @@
 
 	<authentication-manager alias="authenticationManager">
 		<authentication-provider>
-			<user-service>
-				<user name="lokesh" password="password" authorities="ROLE_USER" />
-			</user-service>
+			<jdbc-user-service data-source-ref="dataSource"
+			users-by-username-query="select username,password,active from user_details where username=?"
+			authorities-by-username-query="select l.username, r.role from user_details l, user_role r where l.userid = r.userid and l.username =?"/>
 		</authentication-provider>
 	</authentication-manager>
 
