@@ -70,6 +70,6 @@ public class EditEmployeeController {
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(ModelMap model) {
-		return "logout";
+		return "login";
 	}
 }

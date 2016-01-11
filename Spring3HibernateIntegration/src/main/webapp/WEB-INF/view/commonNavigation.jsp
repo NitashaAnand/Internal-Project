@@ -26,7 +26,7 @@
 		</ul>
 		<ul class="nav pull-right">
 			<li id="logout">
-				<a href=""<c:url value='j_spring_security_logout'/>"><spring:message code="label.logout" /></a>
+				<a href="<c:url value='j_spring_security_logout'/>"><spring:message code="label.logout" /></a>
 			</li>
 		</ul>
 	</div>
