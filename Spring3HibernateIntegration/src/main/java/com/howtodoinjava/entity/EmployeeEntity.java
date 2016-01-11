@@ -17,6 +17,12 @@ public class EmployeeEntity {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
 	@Column(name="id", unique=true, nullable=false)
     private Integer id;
+	
+	@Column(name="USERNAME")
+	private String username;
+	
+	@Column(name="PASSWORD")
+	private String password;
      
     @Column(name="FIRSTNAME")
     private String firstname;
@@ -36,7 +42,19 @@ public class EmployeeEntity {
     @Column(name="comment")
     private String comment;
      
-    public String getAddress() {
+    public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getAddress() {
 		return address;
 	}
 	public void setAddress(String address) {

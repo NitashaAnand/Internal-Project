@@ -64,13 +64,20 @@
 		<form name="form" class="col-xs-2" action="add" commandName="employee" onsubmit="return validate(this);"
 			method="POST">
 			
+			<div class="form-group">
+				<label><spring:message code="label.username.employee" /></label>
+				<div><input class="form-control" type='text' name='username'/></div>
+			</div>
+			
+			<div class="form-group">
+				<label><spring:message code="label.password" /></label>
+				<div><input class="form-control" type='text' name='password'/></div>
+			</div>
 			
 			<div class="form-group">
 				<label><spring:message code="label.firstname" /></label>
 				<div><input class="form-control" type='text' name='firstname'/></div>
 			</div>
-			
-			<div>&nbsp;</div>
 			
 			<div class="form-group">
 				<label><spring:message code="label.lastname" /></label>
@@ -78,28 +85,23 @@
 			</div>
 			
 			<div>
-			<div>&nbsp;</div>
+			
 			<div class="form-group">
 				<label><spring:message code="label.email" /></label>
 				<div><input class="form-control" type='email' name='email' id="email"></div>
 			</div>
 			</div>
 			
-			<div>&nbsp;</div>
 			<div class="form-group">
 				<label><spring:message code="label.contact" /></label>
 				<div><input class="form-control" type='text' name='telephone'></div>
 			</div>
 			
-			
-			<div>&nbsp;</div>
 			<div class="form-group">
 				<label><spring:message code="label.address" /></label>
 				<div><input class="form-control" type='text' name='address'></div>
 			</div>
 			
-			
-			<div>&nbsp;</div>
 			<div class="form-group">
 				<label><spring:message code="label.enter.comment" /></label>
 				<div><input type='checkbox' name='noComment' onclick="enableDisableTextArea(this);"></div>
@@ -108,7 +110,6 @@
 			</div>
 			
 			<div>
-			<div>&nbsp;</div>
 			<div>&nbsp;</div>
 			<div>
 				<button type="submit" class="btn .btn-primary">
