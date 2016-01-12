@@ -12,10 +12,6 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-<div class="container-fluid">
-	<div class="row-fluid"><div class="span-12"><h1><spring:message code="label.header" /></div></div>
-	</div>
-	
 	<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<ul class="nav navbar-nav">
