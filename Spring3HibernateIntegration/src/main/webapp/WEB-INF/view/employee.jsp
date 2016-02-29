@@ -21,8 +21,6 @@
 <th id="firstName"><spring:message code="label.name" /></th>
 <th id="email"><spring:message code="label.email" /></th>
 <th id="contactNumber"><spring:message code="label.contact" /></th>
-<th id="address"><spring:message code="label.address" /></th>
-<th id="comment"><spring:message code="label.comment" /></th>
 </tr>
 </thead>
 <tbody>
@@ -32,10 +30,9 @@
         <td>${emp.lastname}, ${emp.firstname} </td>
         <td>${emp.email}</td>
         <td>${emp.telephone}</td>
-        <td>${emp.address}</td>
-        <td>${emp.comment}</td>
-        <td><button type="submit" class="btn .btn-primary"><a href="delete/${emp.id}">
-				<spring:message code="label.delete" /></button></td>
+        <%-- <td><a href="<c:url value='/edit/${emp.id}' />" >Edit</a></td>
+         <td><button type="submit" class="btn .btn-primary"><a href="delete/${emp.id}">
+				<spring:message code="label.delete" /></button></td> --%>
     </tr>
 </c:forEach>
 </tbody>

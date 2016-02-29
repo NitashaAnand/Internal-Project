@@ -3,7 +3,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
+<c:if test="${empty employee.username}">
 <jsp:include page="commonNavigation.jsp" />
+</c:if>
 	<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -60,65 +62,75 @@
  
 	<div class="row-fluid">
 	  <div>
+	  <c:if test="${empty employee.username}">
 	  <legend>Employee Administration</legend>
-		<form name="form" class="col-xs-2" action="add" commandName="employee" onsubmit="return validate(this);"
+	  </c:if>
+		<form:form name="form" class="col-xs-4" action="add" commandName="employee" onsubmit="return validate(this);"
 			method="POST">
 			
-			<div class="form-group">
-				<label><spring:message code="label.username.employee" /></label>
-				<div><input class="form-control" type='text' name='username'/></div>
-			</div>
+			<table>
+	<c:if test="${!empty employee.username}">
+		<legend>User details</legend>
+   		<tr>
+       		 <td>
+            	<form:hidden path="id" readonly="true" size="8"  disabled="true" />
+            	<form:hidden path="id" />
+        	</td> 
+    	</tr>
+    	<tr><td>
+				<form:label path="username"><spring:message code="label.username.employee" /></form:label>
+				<div><form:input path="username" class="form-control" type='text' name='username' readonly="true" disabled="true"/></div>
+				<div><form:hidden path="username"/></div>
+			</td>
+			</tr>
+    </c:if>
+    <c:if test="${empty employee.username}">
+			<!--  <div class="form-group">-->
+			<tr><td>
+			<form:label path="username"><spring:message code="label.username.employee" /></form:label>
+				<div><form:input path="username" class="form-control" type='text' name='username'/></div>
+			</td>
+			</tr>
+			</c:if>
+			<tr><td>
+				<form:label path="password"><spring:message code="label.password" /></form:label>
+				<div><form:input  path="password" class="form-control" type='text' name='password'/></div>
+			</td></tr>
 			
-			<div class="form-group">
-				<label><spring:message code="label.password" /></label>
-				<div><input class="form-control" type='text' name='password'/></div>
-			</div>
+			<tr><td>
+				<form:label path="firstname"><spring:message code="label.firstname" /></form:label>
+				<div><form:input path="firstname" class="form-control" type='text' name='firstname'/></div>
+			</td></tr>
 			
-			<div class="form-group">
-				<label><spring:message code="label.firstname" /></label>
-				<div><input class="form-control" type='text' name='firstname'/></div>
-			</div>
+			<tr><td>
+				<form:label path="lastname"><spring:message code="label.lastname" /></form:label>
+				<div><form:input path="lastname" class="form-control" type='text' name='lastname'/></div>
+			</td></tr>
 			
-			<div class="form-group">
-				<label><spring:message code="label.lastname" /></label>
-				<div><input class="form-control" type='text' name='lastname'></div>
-			</div>
+			<tr><td>
+				<form:label path="email"><spring:message code="label.email" /></form:label>
+				<div><form:input path="email" class="form-control" type='email' name='email' id="email"/></div>
+			</td></tr>
 			
-			<div>
-			
-			<div class="form-group">
-				<label><spring:message code="label.email" /></label>
-				<div><input class="form-control" type='email' name='email' id="email"></div>
-			</div>
-			</div>
-			
-			<div class="form-group">
-				<label><spring:message code="label.contact" /></label>
-				<div><input class="form-control" type='text' name='telephone'></div>
-			</div>
-			
-			<div class="form-group">
-				<label><spring:message code="label.address" /></label>
-				<div><input class="form-control" type='text' name='address'></div>
-			</div>
-			
-			<div class="form-group">
-				<label><spring:message code="label.enter.comment" /></label>
-				<div><input type='checkbox' name='noComment' onclick="enableDisableTextArea(this);"></div>
-				<div>&nbsp;</div>
-				<div><textarea class="form-control" name='comment' placeholder="Enter text here" id="tArea" disabled="disabled"></textarea></div>
-			</div>
-			
-			<div>
+			<tr><td>
+				<form:label path="telephone"><spring:message code="label.contact" /></form:label>
+				<div><form:input path="telephone" class="form-control" type='text' name='telephone'/></div>
+			</td></tr>
+			</table>
 			<div>&nbsp;</div>
 			<div>
+				<c:if test="${empty employee.username}">
 				<button type="submit" class="btn .btn-primary">
 				<spring:message code="label.add"/></button>
-				<input type="reset" class="btn" value="Reset"/>
+				</c:if>
+				<c:if test="${!empty employee.username}">
+				<button type="submit" class="btn btn-primary">
+				Save changes</button>
+				</c:if>
 			</div>
 			</div>
 			
-		</form>
+		</form:form>
 	   </div>
 	</div>
   </div>

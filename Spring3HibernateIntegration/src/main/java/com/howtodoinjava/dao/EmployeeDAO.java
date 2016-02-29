@@ -8,4 +8,6 @@ public interface EmployeeDAO
     public void addEmployee(EmployeeEntity employee);
     public List<EmployeeEntity> getAllEmployees();
     public void deleteEmployee(Integer employeeId);
+    public void updateEmployee(EmployeeEntity e);
+    public EmployeeEntity getEmployeeById(int id);
 }

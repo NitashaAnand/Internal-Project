@@ -1,5 +1,6 @@
 package com.howtodoinjava.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,7 +79,13 @@ public class CaseReportController {
 	
 
 	@RequestMapping(value = "/caseReport", method = RequestMethod.GET)
-	public String home(ModelMap map, @ModelAttribute(value = "caseReport") CaseDetailsEntity caseDetailsEntity, @ModelAttribute(value = "userDetail") EmployeeEntity employeeEntity){
+	public String home(ModelMap map, @ModelAttribute(value = "caseReport") CaseDetailsEntity caseDetailsEntity, @ModelAttribute(value = "userDetail") EmployeeEntity employeeEntity,Principal principal){
+		String name = principal.getName();
+		System.out.println("Current User"+ name);
+		List<String> currentList = new ArrayList<String>();
+		currentList = detailManager.fetchCurrentUserDetails(name);
+		System.out.println("Current UserDetails......."+currentList);
+		map.addAttribute("currentList",currentList);
 		getTicketPriorities(map);
 		getTicketStatuses(map);
 		getUser(map, employeeEntity);
@@ -91,7 +98,13 @@ public class CaseReportController {
 	public String viewDetails(
 			@ModelAttribute(value = "caseReport") CaseDetailsEntity caseDetailsEntity,
 			BindingResult result,
-			ModelMap map) {
+			ModelMap map,Principal principal) {
+		String name = principal.getName();
+		System.out.println("Current User"+ name);
+		List<String> currentList = new ArrayList<String>();
+		currentList = detailManager.fetchCurrentUserDetails(name);
+		System.out.println("Current UserDetails......."+currentList);
+		map.addAttribute("currentList",currentList);
 		reportList = caseReportManager.fetchResults(caseDetailsEntity);
 		return "redirect:/caseReport";
 	}

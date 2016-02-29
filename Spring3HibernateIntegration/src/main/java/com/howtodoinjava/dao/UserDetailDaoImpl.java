@@ -21,6 +21,11 @@ public class UserDetailDaoImpl extends HibernateDaoSupport implements UserDetail
 		userList=addCriteria(employeeEntity);
 		return userList;
 	}
+	public List<String> fetchCurrentUserDetails(String name) {
+		List<String> currentList = new ArrayList<String>();
+		currentList=addUserCriteria(name);
+		return currentList;
+	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private List<String> addCriteria (final EmployeeEntity employeeEntity){
@@ -43,6 +48,24 @@ public class UserDetailDaoImpl extends HibernateDaoSupport implements UserDetail
 			
 		});
 		return result;
+
+	}
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private List<String> addUserCriteria (final String name){
+		List result= (List)this.getHibernateTemplate().execute(new HibernateCallback() {
+
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				Criteria criteria = session.createCriteria(EmployeeEntity.class);
+				criteria.add(Restrictions.eq("username",name));
+				List currentList = criteria.list();
+				System.out.println("Current User Details ............."+ currentList);
+				return currentList;
+			}
+			
+		});
+		return result;
+		
 
 	}
 

@@ -35,12 +35,7 @@ public class EmployeeEntity {
      
     @Column(name="TELEPHONE")
     private String telephone;
-     
-    @Column(name="Address")
-    private String address;
-     
-    @Column(name="comment")
-    private String comment;
+    
      
     public String getUsername() {
 		return username;
@@ -54,12 +49,7 @@ public class EmployeeEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+	
 	public String getEmail() {
         return email;
     }
@@ -90,10 +80,5 @@ public class EmployeeEntity {
     public void setId(Integer id) {
         this.id = id;
     }
-	public String getComment() {
-		return comment;
-	}
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
+	
 }

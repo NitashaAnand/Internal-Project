@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.hibernate.Session;
 
 import com.howtodoinjava.entity.EmployeeEntity;
 
@@ -31,6 +32,17 @@ public class EmployeeDaoImpl implements EmployeeDAO  {
         }
 	}
 	
+    public EmployeeEntity getEmployeeById(int id) {
+        Session session = this.sessionFactory.getCurrentSession();      
+        EmployeeEntity e = (EmployeeEntity) session.load(EmployeeEntity.class, new Integer(id));
+        System.out.println("Employee loaded successfully, Employee details="+e);
+        return e;
+    }
 	
+    public void updateEmployee(EmployeeEntity p) {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.update(p);
+        System.out.println("Employee updated successfully, Employee Details="+p);
+    }
 
 }

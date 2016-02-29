@@ -21,6 +21,13 @@ public class UserDetailManagerImpl implements UserDetailManager{
 		userList = userDetailDao.fetchUser(employeeEntity);
 		return userList;
 	}
+	public List<String> fetchCurrentUserDetails(String name) {
+		// TODO Auto-generated method stub
+		List<String> userList = new ArrayList<String>();
+		userList = userDetailDao.fetchCurrentUserDetails(name);
+		return userList;
+	}
+
 
 }
 
